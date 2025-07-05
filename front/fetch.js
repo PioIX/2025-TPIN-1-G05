@@ -1,6 +1,6 @@
 async function fetchGetPeliculas(id_pelicula, parametro) {
     try {
-        response = await fetch(`http://localhost:4000/peliculas?id_pelicula=${id_pelicula}&parametro=${parametro}`, {
+        let response = await fetch(`http://localhost:4000/peliculas?id_pelicula=${id_pelicula}&parametro=${parametro}`, {
             method: "GET", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -23,17 +23,15 @@ async function fetchPostPeliculas(titulo, voto_espectadores, año, ganancia, lin
         link: link
     };
     try {
-        response = await fetch(`http://localhost:4000/insertarPeliculas`, {
+        let response = await fetch(`http://localhost:4000/insertarPeliculas`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(datos),
         });
-        console.log(response);
         let result = await response.json();
-        console.log(result);
-        alert(result.mensaje);
+        return result
     } catch (error) {
         alert("Hubo un error: " + error.message);
     }
@@ -44,17 +42,15 @@ async function fetchBorrarPeliculas(id_pelicula) {
         id_pelicula: id_pelicula
     };
     try {
-        response = await fetch(`http://localhost:4000/borrarPeliculas`, {
+        let response = await fetch(`http://localhost:4000/borrarPeliculas`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(datos),
         });
-        console.log(response);
         let result = await response.json();
-        console.log(result);
-        alert("Se borró");
+        return result
     } catch (error) {
         alert("Hubo un error: " + error.message);
     }
@@ -64,7 +60,7 @@ async function fetchBorrarPeliculas(id_pelicula) {
 
 async function fetchGetUsersId(username, password) {
     try {
-        response = await fetch(`http://localhost:4000/users?username=${username}&password=${password}`, {
+        let response = await fetch(`http://localhost:4000/users?username=${username}&password=${password}`, {
             method: "GET", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -72,7 +68,7 @@ async function fetchGetUsersId(username, password) {
         })
         let result = await response.json();
         console.log(result)
-        
+
         return result.res
     } catch (error) {
         alert("Hubo un error: " + error.message);
@@ -84,7 +80,7 @@ async function fetchGetUsersId(username, password) {
 
 async function fetchGetUsersRanking() {
     try {
-        response = await fetch(`http://localhost:4000/usersRanking`, {
+        let response = await fetch(`http://localhost:4000/usersRanking`, {
             method: "GET", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -118,7 +114,7 @@ async function fetchPostInsertUser(username, password) {
         password: password
     };
     try {
-        response = await fetch(`http://localhost:4000/insertUser`, {
+        let response = await fetch(`http://localhost:4000/insertUser`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -135,7 +131,7 @@ async function fetchPostInsertUser(username, password) {
 
 async function fetchGetRecordPuntaje(id) {
     try {
-        response = await fetch(`http://localhost:4000/recordPuntaje?id_usuario=${id}`, {
+        let response = await fetch(`http://localhost:4000/recordPuntaje?id_usuario=${id}`, {
             method: "GET", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -152,7 +148,7 @@ async function fetchGetRecordPuntaje(id) {
 
 async function llenarDatosPersonal(id_user) {   //Recibe el id de usuario del jugador logueado
     let puntajeJugador = await fetchGetRecordPuntaje(id_user);
-    document.getElementById("puntajePropio").innerText = puntajeJugador[0].record
+    document.getElementById("puntajePropio").innerText = puntajeJugador.record
 }
 
 async function fetchPutRecord(id_usuario, puntaje) {
@@ -161,7 +157,7 @@ async function fetchPutRecord(id_usuario, puntaje) {
             puntaje: puntaje,
             id_usuario: id_usuario
         }
-        response = await fetch(`http://localhost:4000/record`, {
+        let response = await fetch(`http://localhost:4000/record`, {
             method: "PUT", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -179,7 +175,7 @@ async function fetchPutRecord(id_usuario, puntaje) {
 
 async function fetchGetPuntaje() {
     try {
-        response = await fetch(`http://localhost:4000/getPuntaje`, {
+        let response = await fetch(`http://localhost:4000/getPuntaje`, {
             method: "GET", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -201,7 +197,7 @@ async function fetchPostPuntajes(fecha, puntaje, id_usuario) {
         id_usuario: id_usuario
     };
     try {
-        response = await fetch(`http://localhost:4000/insertarPuntaje`, {
+        let response = await fetch(`http://localhost:4000/insertarPuntaje`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -222,7 +218,7 @@ async function fetchPutPuntajes(puntaje) {
         let datos = {
             puntaje: puntaje
         }
-        response = await fetch(`http://localhost:4000/modificarPuntaje`, {
+        let response = await fetch(`http://localhost:4000/modificarPuntaje`, {
             method: "PUT", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -243,7 +239,7 @@ async function fetchBorrarPuntaje(id_pelicula) {
         id_pelicula: id_pelicula
     };
     try {
-        response = await fetch(`http://localhost:4000/borrarPuntaje`, {
+        let response = await fetch(`http://localhost:4000/borrarPuntaje`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -261,7 +257,7 @@ async function fetchBorrarPuntaje(id_pelicula) {
 
 async function fetchGetUltimoMejorPuntaje() {
     try {
-        response = await fetch(`http://localhost:4000/getLastMaxPoint`, {
+        let response = await fetch(`http://localhost:4000/getLastMaxPoint`, {
             method: "GET", //GET, POST, PUT o DELETE
             headers: {
                 "Content-Type": "application/json",
@@ -275,7 +271,7 @@ async function fetchGetUltimoMejorPuntaje() {
 
 }
 
-async function fetchPutModificarUltimoPuntaje(id,puntaje) {
+async function fetchPutModificarUltimoPuntaje(id, puntaje) {
     let datos = {
         id: id,
         puntaje: puntaje
@@ -293,5 +289,180 @@ async function fetchPutModificarUltimoPuntaje(id,puntaje) {
         return result;
     } catch (error) {
         alert("Hubo un error: " + error.message);
+    }
+}
+
+async function fetchGetAllMovies() {
+    try {
+        let response = await fetch(`http://localhost:4000/getAllMovies`, {
+            method: "GET", //GET, POST, PUT o DELETE
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        let result = await response.json();
+        return result
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+    }
+}
+
+async function fetchGetAllUsers() {
+    try {
+        let response = await fetch(`http://localhost:4000/getAllUsers`, {
+            method: "GET", //GET, POST, PUT o DELETE
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        let result = await response.json();
+        return result
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+    }
+}
+
+async function llenarDatosPeliculasPut() {
+    try {
+        document.getElementById("opcionesPeliculasPut").innerHTML = ""
+        let opciones = ""
+        let result = await fetchGetAllMovies()
+        for (let i = 0; i < result.length; i++) {
+            opciones += `<option value = ${result[i].id_pelicula}>"${result[i].titulo}"</option>`
+        }
+        document.getElementById("opcionesPeliculasPut").innerHTML = opciones
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+    }
+}
+
+async function llenarDatosPeliculasDelete() {
+    try {
+        document.getElementById("opcionesPeliculasDelete").innerHTML = ""
+        let opciones = ""
+        let result = await fetchGetAllMovies()
+        for (let i = 0; i < result.length; i++) {
+            opciones += `<option value = ${result[i].id_pelicula}>"${result[i].titulo}"</option>`
+        }
+        document.getElementById("opcionesPeliculasDelete").innerHTML = opciones
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+    }
+}
+
+async function llenarDatosUsuariosPut() {
+    try {
+        document.getElementById("opcionesUsuariosPut").innerHTML = ""
+        let opciones = ""
+        let result = await fetchGetAllUsers()
+        for (let i = 0; i < result.length; i++) {
+            opciones += `<option value = ${result[i].id_usuario}>${result[i].username}</option>`
+        }
+        document.getElementById("opcionesUsuariosPut").innerHTML = opciones
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+    }
+}
+
+async function llenarDatosUsuariosDelete() {
+    try {
+        document.getElementById("opcionesUsuariosDelete").innerHTML = ""
+        let opciones = ""
+        let result = await fetchGetAllUsers()
+        for (let i = 0; i < result.length; i++) {
+            opciones += `<option value = ${result[i].id_usuario}>${result[i].username}</option>`
+        }
+        document.getElementById("opcionesUsuariosDelete").innerHTML = opciones
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+    }
+}
+
+async function fetchPutUsuarios(id_usuario, username, password, record) {
+    try {
+        let datos = {
+            id_usuario: id_usuario,
+            username: username,
+            password: password,
+            record: record
+        }
+        let response = await fetch(`http://localhost:4000/changeUser`, {
+            method: "PUT", //GET, POST, PUT o DELETE
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datos)
+        })
+        let result = await response.json();
+        return result
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+
+    }
+}
+
+async function fetchPostUsuarios(username, password, record) {
+    let datos = {
+        username: username,
+        password: password,
+        record: record
+    };
+    try {
+        let response = await fetch(`http://localhost:4000/insertUserAdmin`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datos),
+        });
+        let result = await response.json();
+        return result
+    } catch (error) {
+        alert("Hubo un error: " + error.message);;
+    }
+}
+
+async function fetchDeleteUsuarios(id_usuario) {
+    let datos = {
+        id_usuario: id_usuario
+    }
+    try {
+        let response = await fetch(`http://localhost:4000/deleteUser`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datos),
+        });
+        let result = await response.json();
+        return result
+    } catch (error) {
+        alert("Hubo un error: " + error.message);;
+    }
+}
+
+async function fetchPutPeliculas(id_pelicula, titulo, ganancia, link, voto_espectadores, año) {
+    try {
+        let datos = {
+            id_pelicula: id_pelicula,
+            titulo: titulo,
+            ganancia: ganancia,
+            link: link,
+            voto_espectadores: voto_espectadores,
+            año: año
+
+        }
+        let response = await fetch(`http://localhost:4000/changeMovie`, {
+            method: "PUT", //GET, POST, PUT o DELETE
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datos)
+        })
+        let result = await response.json();
+        return result
+    } catch (error) {
+        alert("Hubo un error: " + error.message);
+
     }
 }

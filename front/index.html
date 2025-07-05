@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,25 +7,32 @@
     <link rel="icon" href="../images/image.png" type="image/x-icon">
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <section id="mainMenu">
         <h1>MOVIE MASTER</h1>
-        <section id = "paginaPrincipal">
-            <button onclick="showModalCuenta()"><h2>CUENTA</h2></button>
-            <button onclick="showModalPlay()"><h2>JUGAR</h2></button>
-            <button onclick="showModalRanking()"><h2>RANKING</h2></button>
+        <section id="paginaPrincipal">
+            <button onclick="showModalCuenta()">
+                <h2>CUENTA</h2>
+            </button>
+            <button onclick="showModalPlay()">
+                <h2>JUGAR</h2>
+            </button>
+            <button onclick="showModalRanking()">
+                <h2>RANKING</h2>
+            </button>
         </section>
         <dialog id="modalSesion1" class="modal">
             <button class="closeButton" onclick="closeModalCuenta1()">X</button>
             <h2>CUENTA</h2>
             <div class="partesAccion">
                 <div class="purplePart">
-                <h3>REGISTRARSE</h3>
-                <button class="accionBtn" onclick="register()">X</button>
+                    <h3>REGISTRARSE</h3>
+                    <button class="accionBtn" onclick="register()">X</button>
                 </div>
                 <div class="redPart">
-                <h3>LOGUEAR</h3>
-                <button class="accionBtn" onclick="login()">X</button>
+                    <h3>LOGUEAR</h3>
+                    <button class="accionBtn" onclick="login()">X</button>
                 </div>
             </div>
             <div class="formulario">
@@ -34,21 +42,21 @@
                 <input id="inputPassword" type="password">
             </div>
         </dialog>
-        <dialog id = "modalSesion2"  class="modal">
+        <dialog id="modalSesion2" class="modal">
             <button class="closeButton" onclick="closeModalCuenta2()">X</button>
             <h2>CUENTA</h2>
             <div class="partesAccion">
-            <div class="purplePart">
-                <h3>CUENTA LOGUEADA</h3>
-                <p id="userLogued"></p>
-            </div>
-            <div  class="redPart">
-                <h3 >CERRAR SESIÓN</h3>
-                <button onclick="closeAccount()">PRESIONAME</button>
-            </div>
+                <div class="purplePart">
+                    <h3>CUENTA LOGUEADA</h3>
+                    <p id="userLogued"></p>
+                </div>
+                <div class="redPart">
+                    <h3>CERRAR SESIÓN</h3>
+                    <button onclick="closeAccount()">PRESIONAME</button>
+                </div>
             </div>
         </dialog>
-        <dialog id = "modalJugar"  class="modal">
+        <dialog id="modalJugar" class="modal">
             <button class="closeButton" onclick="closeModalPlay()">X</button>
             <h2>JUGAR</h2>
             <p>ELIGE CATEGORÍA</p>
@@ -58,7 +66,7 @@
                 <button onclick="changeGame('año')">FECHA</button>
             </div>
         </dialog>
-        <dialog id = "modalRanking"  class="modal">
+        <dialog id="modalRanking" class="modal">
             <button class="closeButton" onclick="closeModalRanking()">X</button>
             <h2>RANKING</h2>
             <table id="tabla">
@@ -73,50 +81,119 @@
             </table>
             <div>
                 <h3>PUNTAJE MAXIMO</h3>
-                <h3 id = "puntajePropio">Inicia sesión para ver tu puntaje máximo</h3>
+                <h3 id="puntajePropio">Inicia sesión para ver tu puntaje máximo</h3>
+            </div>
+        </dialog>
+        <dialog id="modalAdmin" class="modal">
+            <button class="closeButton" onclick="closeModalAdmin()">X</button>
+            <button onclick="openAdministerPelicula()">Peliculas</button>
+            <button onclick="openAdministerUser()">Usuarios</button>
+        </dialog>
+        <dialog id="administerPelicula" class="modal">
+            <button class="closeButton" onclick="closeAdministerPelicula()">X</button>
+            <button onclick="openPostPeliculas()">Agregar</button>
+            <button onclick="openPutPeliculas()">Modificar</button>
+            <button onclick="openDeletePeliculas()">Borrar</button>
+        </dialog>
+        <dialog id="borrarPelicula" class="modal">
+            <button class="closeButton" onclick="closeDeletePeliculas()">X</button>
+            <select name="deletePelicula" id="opcionesPeliculasDelete"></select>
+            <button onclick="borrarPeliculas()">Borrar</button>
+        </dialog>
+        <dialog id="modificarPelicula" class="modal">
+            <button class="closeButton" onclick="closePutPeliculas()">X</button>
+            <select name="putPelicula" id="opcionesPeliculasPut"></select>
+            <input type="text" id="titlePut" placeholder="Ingrese el titulo">
+            <input type="number" id="gananciaPut" placeholder="Ingrese la ganancia">
+            <input type="number" id="voto_espectadoresPut" placeholder="Ingrese el voto de la audiencia">
+            <input type="text" id="linkPut" placeholder="Ingrese el link">
+            <input type="number" id="añoPut" placeholder="Ingrese el año">
+            <button onclick="modificarPeliculas()">Modificar</button>
+        </dialog>
+        <dialog id="agregarPelicula" class="modal">
+            <button class="closeButton" onclick="closePostPeliculas()">X</button>
+            <input type="text" id="titlePost" placeholder="Ingrese el titulo">
+            <input type="number" id="gananciaPost" placeholder="Ingrese la ganancia">
+            <input type="number" id="voto_espectadoresPost" placeholder="Ingrese el voto de la audiencia">
+            <input type="text" id="linkPost" placeholder="Ingrese el link">
+            <input type="number" id="añoPost" placeholder="Ingrese el año">
+            <button onclick="agregarPeliculas()">Agregar</button>
+        </dialog>
+        <dialog id="administerUser" class="modal">
+            <button class="closeButton" onclick="closeAdministerUser()">X</button>
+            <button onclick="openPutUsuarios()">Modificar</button>
+            <button onclick="openPostUsuarios()">Agregar</button>
+            <button onclick="openDeleteUsuarios()">Borrar</button>
+        </dialog>
+        <dialog id="borrarUsuario" class="modal">
+            <button class="closeButton" onclick="closeDeleteUsuarios()">X</button>
+            <select name="deleteUsuario" id="opcionesUsuariosDelete"></select>
+            <button onclick="borrarUsuarios()">Borrar</button>
+        </dialog>
+        <dialog id="modificarUsuario" class="modal">
+            <button class="closeButton" onclick="closePutUsuarios()">X</button>
+            <select name="putUsuario" id="opcionesUsuariosPut"></select>
+            <input type="text" id="usernamePut" placeholder="Ingrese el nombre de usuario">
+            <input type="text" id="passwordPut" placeholder="Ingrese la contraseña">
+            <input type="number" id="recordPut" placeholder="Ingrese el record">
+            <button onclick="modificarUsuarios()">Modificar</button>
+        </dialog>
+        <dialog id="agregarUsuario" class="modal">
+            <button class="closeButton" onclick="closePostUsuarios()">X</button>
+            <input type="text" id="usernamePost" placeholder="Ingrese el nombre de usuario">
+            <input type="text" id="passwordPost" placeholder="Ingrese la contraseña">
+            <input type="number" id="recordPost" placeholder="Ingrese el record">
+            <button onclick="agregarUsuarios()">Agregar</button>
+        </dialog>
+    </section>
+    </section>
+    <section id="playPart" style="display: none;">
+        <section id="seccionPlay">
+            <div id="flextop">
+                <h2 id="namePeli1_0">NOMBRE PELICULA 1</h2>
+                <div id="mediobottom">
+                    <h3 id="pointShow">PUNTOS</h3>
+                    <img src="../images/logo.png" alt="logo">
+                    <h3 id="categoryShow">CATEGORÍA</h3>
+                </div>
+                <h2 id="namePeli2_0">NOMBRE PELICULA 2</h2>
+            </div>
+            <div id="flexbottom">
+                <div class="buttonSelect">
+                    <button class="selectButton" id="peliculas1" onclick="buttonAnswer1()">
+                        <h3 id="namePeli1_1">NOMBRE PELICULA 1</h3>
+                    </button>
+                </div>
+                <div class="buttonSelect">
+                    <button class="selectButton" id="peliculas2" onclick="buttonAnswer2()">
+                        <h3 id="namePeli2_1">NOMBRE PELICULA 2</h3>
+                    </button>
+                </div>
+            </div>
+        </section>
+        <dialog id="modalFinal" class="modal">
+            <h2>PERDISTE</h2>
+            <div class="redPart">
+                <h3>PUNTUACION</h3>
+                <p id="pointModalFinal">X</p>
+            </div>
+            <div class="purplePart">
+                <h3>PUNTUACION MAXIMA</h3>
+                <p id="maxpointModalFinal">X</p>
+            </div>
+            <div>
+                <button onclick="changeScreen()">Volver al inicio</button>
+                <button onclick="playAgain()">Volver a jugar</button>
             </div>
         </dialog>
     </section>
-    <section id="playPart" style="display: none;">
-            <section id="seccionPlay">
-                <div id="flextop">
-                    <h2 id="namePeli1_0">NOMBRE PELICULA 1</h2>
-                    <div id="mediobottom">
-                        <h3 id="pointShow">PUNTOS</h3>
-                        <img src="../images/logo.png" alt="logo">
-                        <h3 id="categoryShow">CATEGORÍA</h3>
-                    </div>
-                    <h2 id="namePeli2_0">NOMBRE PELICULA 2</h2>
-                </div>
-                <div id="flexbottom">
-                    <div class="buttonSelect">
-                        <button class="selectButton" id="peliculas1" onclick="buttonAnswer1()"><h3 id="namePeli1_1">NOMBRE PELICULA 1</h3></button>
-                    </div>
-                    <div class="buttonSelect">
-                        <button class="selectButton" id="peliculas2" onclick="buttonAnswer2()"><h3 id="namePeli2_1">NOMBRE PELICULA 2</h3></button>
-                    </div>
-                </div>
-            </section>
-            <dialog id="modalFinal"  class="modal">
-                <h2>PERDISTE</h2>
-                    <div class="redPart">
-                        <h3>PUNTUACION</h3>
-                        <p id="pointModalFinal">X</p>
-                    </div><div class="purplePart" >
-                        <h3>PUNTUACION MAXIMA</h3>
-                        <p id="maxpointModalFinal">X</p>
-                    </div>  
-                <div>
-                    <button onclick="changeScreen()">Volver al inicio</button>
-                    <button onclick="playAgain()">Volver a jugar</button>
-                </div>
-            </dialog>
-    </section>
     <footer>
-        
+
     </footer>
     <script src="dom.js"></script>
     <script src="fetch.js"></script>
     <script src="script.js"></script>
+    <script src="admin.js"></script>
 </body>
+
 </html>
