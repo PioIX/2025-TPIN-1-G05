@@ -1,2 +1,2 @@
-.env
-*.env
+../back/.pio.env
+../back/.home.env

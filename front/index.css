@@ -1,72 +1,132 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* --- RESET CSS BÁSICO --- */
+*{
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+/* --- GENERAL ---*/
+body {
+    background: linear-gradient(135deg, #6533d1 0%, #17001a 45%, #1a0000 55%, #c70c0c 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #fff;
+}  
+/* --- BOTONES --- */
+button {
+    background-color: #0CC768;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    #paginaPrincipal button {
+        margin: 10px;
+        padding: 18px;
+        box-shadow: 0 2px 8px #0003;
+    }
+}
+button:hover {
+    background-color: #0aa558;
+    transform: translateY(-2px) scale(1.04);
+}
+/* --- FONTS ---*/
+h1{
+    font-size: 4rem;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    color: #fff;
+    text-shadow: 0 2px 8px #0008;
+}
+/* --- PARTES ---*/
+#mainMenu {
+    max-width: 600px;
+    margin: 14rem auto 0 auto;
+    text-align: center;
+} 
+
+#playPart {
+    height: 100%;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+    #playPart section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 18px;
+    }
+    #playPart h2 {
+        font-size: 2rem;
+        margin: 0 0 8px 0;
+        padding: 5%;
+        color: black;
+    }
+    #playPart img {
+        max-width: 180px;
+        box-shadow: 0 2px 12px #0005;
+        margin: 0 16px;
+    }
+    #namePeli1_0, #namePeli2_0{
+        background-image: none;
+        width: 50vw;
+        background-repeat: no-repeat;
+        background-size:contain;
+        background-position: center 5vh;
+    }
+    #seccionPlay{
+        display: flex;
+        flex-direction: column;
+        #flextop {
+            height: 75vh;
+            display: flex;
+            flex-direction: row;
+        }
+        #mediobottom{
+            width: 20vw;
+            min-width: 25px;
+            z-index: 1001;
+            align-self: center;
+            h3{
+                font-size: x-large;
+            }
+        }
+        #flexbottom {
+            display: flex;
+            flex-direction: row;
+            vertical-align: top;
+            width: 100%;
+            .buttonSelect{
+                width: 100%;
+                min-width: 75px;
+            }
+            .selectButton{
+                width: 50vw;
+                height: 25vh;
+                border: solid;
+                border-color: #ffffff;
+            }
+            #peliculas1{
+                background-color: #6533d1 ;
+            }
+            #peliculas2{
+                background-color: #c70c0c;
+            }
+            #peliculas2:hover{
+                background-color: #ff0000;
+            }
+            #peliculas1:hover{
+                background-color: #7a3dff;
+            }
+        }
+    }
+}
+
+
+
+/* --- ESTILOS PARA EL MODAL --- */
 .modal {
     border: none;
     background-color: #10062b;
@@ -85,18 +145,10 @@
         font-size: 20px;
         font-weight: bold;
     }
-    button {
-        background-color: #0CC768;
-        border: none;
-        padding: 15px 30px;
-        color: white;
-        font-weight: bold;
-        font-size: 20px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    button:hover {
-        background-color: #0aa558;
+    p {
+    margin: 10px 0 0;
+    font-size: 24px;
+    font-weight: bold;
     }
     .closeButton {
         position: absolute;
@@ -140,11 +192,6 @@
 .redPart {
     background-color: #ff3131;
 }
-.modal p {
-    margin: 10px 0 0;
-    font-size: 24px;
-    font-weight: bold;
-}
 #modalFinal div:last-of-type {
     display: flex;
     justify-content: space-around;
@@ -173,6 +220,23 @@
     }
 }
 
-#tabla{
+#tabla {
+    margin: 18px 0;
+    background: #1a093e;
+    overflow: hidden;
+    margin: 18px auto;
     color: white;
+}
+#tabla th, #tabla td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #3d16a8;
+    text-align: center;
+}
+#tabla th {
+    background: #3d16a8;
+    color: #fff;
+    font-size: 1.1rem;
+}
+#tabla tr:last-child td {
+    border-bottom: none;
 }
