@@ -118,6 +118,7 @@ app.post('/insertarPeliculas', async function (req, res) {
 app.get('/recordPuntaje', async function (req, res) {
     try {
         let respuesta = await realizarQuery(`SELECT record FROM Usuarios WHERE id_usuario = ${req.query.id_usuario}`);
+        console.log(respuesta)
         res.send({ record: respuesta[0].record });
     } catch (error) {
         res.send({ mensaje: "Tuviste un error", error: error.message })
@@ -156,7 +157,13 @@ app.listen(port, () => {
 //GET PUNTAJES
 app.get('/getPuntaje', async function (req,res) {
     try {
-        let respuesta = await realizarQuery(`SELECT * FROM Puntajes ORDER BY puntaje`);
+        let respuesta = await realizarQuery(`
+            SELECT Puntajes.puntaje, Usuarios.username 
+            FROM Puntajes 
+            INNER JOIN Usuarios 
+            ON Puntajes.id_usuario = Usuarios.id_usuario 
+            ORDER BY Puntajes.puntaje DESC
+        `);
         res.send(respuesta);
     }
     catch (error) {

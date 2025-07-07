@@ -97,11 +97,12 @@ async function fetchGetUsersRanking() {
 
 async function llenarDatosRanking() {
     let tabla = document.getElementById("tabla").innerHTML
-    let resulto = await fetchGetUsersRanking();
+    let resulto = await fetchGetPuntaje();
+    console.log(resulto)
     for (let i = 0; i < resulto.length; i++) {
         tabla += `<tr>
             <td><p>${resulto[i].username}</p></td>
-            <td><p>${resulto[i].record}</p></td>
+            <td><p>${resulto[i].puntaje}</p></td>
             </tr>`
     }
     document.getElementById("tabla").innerHTML = tabla;

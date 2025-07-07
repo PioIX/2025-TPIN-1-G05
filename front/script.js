@@ -46,16 +46,23 @@ async function seleccionIncial() {
 
 //prepara las variables para el juego luego de la seleccion
 async function changeGame(buttonparametro) {
-    parametro = buttonparametro
-    console.log(parametro)
-    closeModalPlay()
-    await seleccionIncial()
-    console.log("a")
-    replaceCategory()
-    changeScreen()
+    if(id_user < 0){
+        alert("Debes iniciar sesión para jugar")
+        return
+    }else{
+        parametro = buttonparametro
+        console.log(parametro)
+        closeModalPlay()
+        await seleccionIncial()
+        replaceCategory()
+        changeScreen()
+    }
+
 }
 //prepara el juego devuelta
 async function playAgain() {
+    point =0
+    replacePoint(point)
     await seleccionIncial()
     closeModalFinal()
 }
@@ -105,7 +112,7 @@ async function answer(selecctionAnswer) {
         await fetchPutModificarUltimoPuntaje(id_user,maxPoint.record)
         //parametro dado id del user y puntos maximos
         }
-        replaceandshowModalFinal(maxPoint.record.record, point)
+        replaceandshowModalFinal(maxPoint.record, point)
         showModalFinal()
     }
 }
