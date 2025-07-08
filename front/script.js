@@ -108,9 +108,10 @@ async function answer(selecctionAnswer) {
         }
         let tenPlace = await fetchGetUltimoMejorPuntaje()
         // Parametro recibe el decimo puesto de la tabla (puntaje)
-        if (tenPlace < maxPoint.record) {
-        await fetchPutModificarUltimoPuntaje(id_user,maxPoint.record)
-        //parametro dado id del user y puntos maximos
+        if (tenPlace[0].puntaje< point) {
+            console.log("es mayor")
+            await fetchPutModificarUltimoPuntaje(point,id_user)
+            //parametro dado id del user y puntos maximos
         }
         replaceandshowModalFinal(maxPoint.record, point)
         showModalFinal()

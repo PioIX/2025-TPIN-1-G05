@@ -273,12 +273,13 @@ function closeModalFinal() {
 }
 
 // dom index
-function changeScreen() {
+async function changeScreen() {
     if (menu != 0) {
         document.getElementById("playPart").style.display = ''
         document.getElementById("mainMenu").style.display = 'none'
         menu = 0
     } else {
+        await llenarDatosRanking()
         closeModalFinal()
         document.getElementById("mainMenu").style.display = ''
         document.getElementById("playPart").style.display = 'none'

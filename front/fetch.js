@@ -166,7 +166,6 @@ async function fetchPutRecord(id_usuario, puntaje) {
             body: JSON.stringify(datos)
         })
         let result = await response.json();
-        alert("Se modifico")
         return result
     } catch (error) {
         alert("Hubo un error: " + error.message);
@@ -272,10 +271,10 @@ async function fetchGetUltimoMejorPuntaje() {
 
 }
 
-async function fetchPutModificarUltimoPuntaje(id, puntaje) {
+async function fetchPutModificarUltimoPuntaje(puntaje, id) {
     let datos = {
-        id: id,
-        puntaje: puntaje
+        puntaje: puntaje,
+        id_usuario: id
     };
     try {
         let response = await fetch(`http://localhost:4000/modificarUltimoPuntaje`, {
@@ -286,7 +285,7 @@ async function fetchPutModificarUltimoPuntaje(id, puntaje) {
             body: JSON.stringify(datos),
         });
         let result = await response.json();
-        alert(result.mensaje);
+        console.log(result.mensaje);
         return result;
     } catch (error) {
         alert("Hubo un error: " + error.message);

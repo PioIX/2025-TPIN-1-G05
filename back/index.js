@@ -133,7 +133,7 @@ app.put('/record', async function (req, res) {
         console.log(check)
         if (check.length == 0) {      //Este condicional corrobora que el récord sea mayor que el puntaje
             await realizarQuery(`UPDATE Usuarios SET record = ${req.body.puntaje} WHERE id_usuario = ${req.body.id_usuario}`);   //A través del id de usuario identifica qué record debe cambiar
-            res.send("Record cambiado")
+            res.send({mensaje:"Record cambiado"})
         } else {
             res.send("El puntaje no es mayor que el record")
         }
@@ -163,6 +163,7 @@ app.get('/getPuntaje', async function (req,res) {
             INNER JOIN Usuarios 
             ON Puntajes.id_usuario = Usuarios.id_usuario 
             ORDER BY Puntajes.puntaje DESC
+            limit 10
         `);
         res.send(respuesta);
     }
@@ -212,7 +213,7 @@ app.delete('/borrarPuntaje', function (req, res) {
 //GET DÉCIMO PUNTAJE
 app.get('/getLastMaxPoint', async function (req,res) {
     try {
-        let respuesta = await realizarQuery(`select puntaje,id_puntaje from Puntajes order by puntaje limit 1`);
+        let respuesta = await realizarQuery(`select puntaje from Puntajes order by puntaje limit 1`);
         res.send(respuesta);
     }catch (error) {
         res.send({ mensaje: "Tuviste un error", error: error.message });
