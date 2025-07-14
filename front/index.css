@@ -167,23 +167,18 @@ h1{
 
 .redPart, .purplePart {
     display: inline-block;
-    width: 50%;
+    width: 40%;
     min-width: 150px;
     min-height: 75px;
     padding: 20px 0;
     color: white;
+    text-align: center;
 }
 .purplePart {
     background-color: #3d16a8;
 }
 .redPart {
     background-color: #ff3131;
-}
-#modalFinal div:last-of-type {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px 0;
-    background-color: #0B0E27;
 }
 .partesAccion {
     display: flex;
@@ -192,8 +187,8 @@ h1{
 }
 .accionBtn {
     font-size: 18px;
-    width: 50%;
-    max-height: 40px;
+    width: 80%;
+    min-height: 40px;
     min-width: 80px;
     padding: 2px 20px;
     margin-top: 10px;
@@ -262,7 +257,11 @@ h1{
         font-size: x-large;
     }
     h2{
-        font-size: large;
+        font-size: x-large;
+    }
+    button{
+        margin-top: 5%;
+        width: 40%;
     }
 }
 @media  (max-width: 1060px) {
@@ -271,7 +270,15 @@ h1{
     }
 }
 @media  (max-width: 800px) {
-
+    .accionBtn{
+        font-size: x-small;
+        width: 80%;
+    }
+    #modalSesion2, #modalSesion1 {
+        h3 {
+            font-size: normal;
+        }
+    }
     #flexbottom {
         flex-direction: column;
         align-items: center;
@@ -300,8 +307,25 @@ h1{
             }
         }
     }
+    .modal {
+        .formulario {
+            
+                display: flex;
+                flex-direction: column;
+        }
+    }
 }
 @media  (max-width: 600px) {
+    #modalFinal{
+        h3{
+            font-size: medium;
+        }
+    }
+    #modalSesion2, #modalSesion1 {
+        h3 {
+            font-size:medium;
+        }
+    }
     #playPart {
         #seccionPlay {
             #mediobottom {
