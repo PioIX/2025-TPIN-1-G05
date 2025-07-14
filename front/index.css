@@ -40,6 +40,7 @@ h1{
     color: #fff;
     text-shadow: 0 2px 8px #0008;
 }
+
 /* --- PARTES ---*/
 #mainMenu {
     max-width: 600px;
@@ -79,11 +80,6 @@ h1{
     #seccionPlay{
         display: flex;
         flex-direction: column;
-        #flextop {
-            height: 75vh;
-            display: flex;
-            flex-direction: row;
-        }
         #mediobottom{
             width: 20vw;
             min-width: 25px;
@@ -93,35 +89,41 @@ h1{
                 font-size: x-large;
             }
         }
-        #flexbottom {
-            display: flex;
-            flex-direction: row;
-            vertical-align: top;
-            width: 100%;
-            .buttonSelect{
-                width: 100%;
-                min-width: 75px;
-            }
-            .selectButton{
-                width: 50vw;
-                height: 25vh;
-                border: solid;
-                border-color: #ffffff;
-            }
-            #peliculas1{
-                background-color: #7a3dff  ;
-            }
-            #peliculas2{
-                background-color: #ff0000;
-            }
-            #peliculas2:hover{
-                background-color: #c70c0c;
-            }
-            #peliculas1:hover{
-                background-color: #6533d1;
-            }
-        }
     }
+}
+
+#flextop {
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+}
+#flexbottom {
+    display: flex;
+    flex-direction: row;
+    vertical-align: top;
+    width: 100%;
+}
+.buttonSelect{
+    width: 100%;
+    min-width: 75px;
+}
+.selectButton{
+    width: 50vw;
+    height: 25vh;
+    border: solid;
+    border-color: #ffffff;
+}
+#peliculas1{
+    background-color: #7a3dff  ;
+}
+#peliculas2{
+    background-color: #ff0000;
+}
+#peliculas2:hover{
+    background-color: #c70c0c;
+}
+#peliculas1:hover{
+    background-color: #6533d1;
 }
 
 
@@ -135,21 +137,6 @@ h1{
     min-width: 300px;
     text-align: center;
     font-family: sans-serif;
-    h2 {
-        margin: 0;
-        padding: 20px 0;
-        font-size: 50px;
-    }
-    h3 {
-        margin: 0;
-        font-size: 20px;
-        font-weight: bold;
-    }
-    p {
-    margin: 10px 0 0;
-    font-size: 24px;
-    font-weight: bold;
-    }
     .closeButton {
         position: absolute;
         top: 20px;
@@ -244,12 +231,78 @@ h1{
 #tabla tr:last-child td {
     border-bottom: none;
 }
-
- .container {
+.container {
     display: flex;
     flex-direction: row;
     justify-content: center;
 } 
 #yourPoint{
     margin-bottom: 5%;
+}
+@media  (max-width: 1060px) {
+    #logo{
+        width: 150px;
+    }
+}
+@media  (max-width: 800px) {
+
+    #flexbottom {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .selectButton {
+        width: 100vw;
+        height: 18vh;
+        font-size: 1rem;
+    }
+    #flextop {
+        height: 65vh;
+    }
+    #mainMenu {
+        margin: 2rem auto 0 auto;
+    }
+    #logo{
+        display: none;
+    }
+    #playPart {
+        #seccionPlay {
+            #mediobottom {
+                h3{
+                    font-size: smaller;
+                }
+            }
+        }
+    }
+}
+@media  (max-width: 600px) {
+    #playPart {
+        #seccionPlay {
+            #mediobottom {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                width:fit-content;
+                align-self: center;
+                h3 {
+                    font-size: x-small;
+                }
+            }
+        }
+    
+        #namePeli1_0, #namePeli2_0 {
+            width: 100vw;
+            background-repeat:repeat-x;
+            height: 29vh;
+        }
+        section {
+            gap: 0px;
+        }
+    }
+    #flextop{
+        flex-direction: column;
+    }
+    h2{
+        font-size: smaller;
+    }
 }
