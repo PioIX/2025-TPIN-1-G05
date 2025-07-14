@@ -3,13 +3,14 @@
     padding: 0;
     overflow: hidden;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-weight: bold;
 }
 /* --- GENERAL ---*/
 body {
     background: linear-gradient(135deg, #6533d1 0%, #17001a 45%, #1a0000 55%, #c70c0c 100%);
     min-height: 100vh;
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
     color: #fff;
 }  
 /* --- BOTONES --- */
@@ -18,7 +19,6 @@ button {
     border: none;
     padding: 15px 30px;
     color: white;
-    font-weight: bold;
     font-size: 1.3rem;
     cursor: pointer;
     transition: background 0.2s, transform 0.2s;
@@ -167,7 +167,7 @@ h1{
 
 .redPart, .purplePart {
     display: inline-block;
-    width: 40%;
+    width: 50%;
     min-width: 150px;
     min-height: 75px;
     padding: 20px 0;
@@ -207,9 +207,22 @@ h1{
         min-width: 60px;
     }
 }
-
+#modalSesion2,#modalSesion1{
+    width: 50vw;
+    #userLogued{
+        font-size: x-large;
+    }
+    h2{
+        font-size: xx-large;
+    }
+    h3{
+        font-size: x-large;
+    }
+    padding-bottom: 5vh;
+}
 #tabla {
     margin: 18px 0;
+    padding: 2%;
     background: #1a093e;
     overflow: hidden;
     margin: 18px auto;
@@ -218,6 +231,7 @@ h1{
 #tabla th, #tabla td {
     border-bottom: 1px solid #3d16a8;
     text-align: center;
+    padding: 2% 5% 2% 5%;
 }
 #tabla th {
     background: #3d16a8;
@@ -230,6 +244,7 @@ h1{
 }
 #tabla tr:last-child td {
     border-bottom: none;
+    margin-bottom: 2vh;
 }
 .container {
     display: flex;
@@ -238,6 +253,17 @@ h1{
 } 
 #yourPoint{
     margin-bottom: 5%;
+}
+#modalFinal{
+    p{
+        font-size: xx-large;
+    }
+    h3{
+        font-size: x-large;
+    }
+    h2{
+        font-size: large;
+    }
 }
 @media  (max-width: 1060px) {
     #logo{
