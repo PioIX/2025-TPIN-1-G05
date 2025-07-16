@@ -62,7 +62,7 @@ async function changeGame(buttonparametro) {
 //prepara el juego devuelta
 async function playAgain() {
     point =0
-    replacePoint(point)
+    replacePoint()
     await seleccionIncial()
     closeModalFinal()
 }
@@ -114,6 +114,8 @@ async function answer(selecctionAnswer) {
             //parametro dado id del user y puntos maximos
         }
         replaceandshowModalFinal(maxPoint.record, point)
+        point =0
+        replacePoint()
         showModalFinal()
     }
 }
